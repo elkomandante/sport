@@ -27,5 +27,19 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
+    _instanceof:
+        # services whose classes are instances of CustomInterface will be tagged automatically
+        App\Import\ImporterInterface:
+            tags: [ 'app.importer' ]
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Import\ImportManager:
+        # inject all services tagged with app.handler as first argument
+        arguments:
+            - !tagged_iterator app.importer
+
+    App\EventListener\CommandExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: console.command }
