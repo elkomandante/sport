@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2432a0f6-59bf-4d21-b042-7bb93c6860d7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Command/ImportCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/ImportCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/League.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/League.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Sport.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Sport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Import/ImportFather.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Import/ImportFather.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Import/SportImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Import/SportImport.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +92,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../leapRate/leaprate_com" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -120,7 +122,11 @@
       <workItem from="1602152589314" duration="2233000" />
       <workItem from="1602170788574" duration="3519000" />
       <workItem from="1602189114682" duration="3543000" />
-      <workItem from="1602232834690" duration="1049000" />
+      <workItem from="1602232834690" duration="10980000" />
+      <workItem from="1602257290017" duration="38000" />
+      <workItem from="1602349501011" duration="9638000" />
+      <workItem from="1602424734790" duration="6030000" />
+      <workItem from="1602490818894" duration="49000" />
     </task>
     <servers />
   </component>
@@ -128,21 +134,29 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2721" y="258" width="412" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1602192048895">
+    <state x="2721" y="258" width="412" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1602356957833">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2721" y="258" width="412" height="562" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602192048895" />
+    <state x="2721" y="258" width="412" height="562" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602356957833" />
+    <state x="2470" y="158" width="866" height="762" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602254119663">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2470" y="158" width="866" height="762" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602254119663" />
     <state x="2646" y="297" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602171336749">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2646" y="297" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602171336749" />
-    <state x="2696" y="297" width="424" height="484" key="FileChooserDialogImpl" timestamp="1602157626369">
+    <state x="2696" y="297" width="424" height="484" key="FileChooserDialogImpl" timestamp="1602490864147">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2696" y="297" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602157626369" />
-    <state x="2644" y="258" width="577" height="561" key="NewPhpClassDialog" timestamp="1602192030340">
+    <state x="2696" y="297" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602490864147" />
+    <state x="2644" y="258" width="577" height="561" key="NewPhpClassDialog" timestamp="1602424854527">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2644" y="258" width="577" height="561" key="NewPhpClassDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602192030340" />
+    <state x="2644" y="258" width="577" height="561" key="NewPhpClassDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602424854527" />
+    <state x="2841" y="413" width="618" height="522" key="find.popup" timestamp="1602363587996">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2841" y="413" width="618" height="522" key="find.popup/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602363587996" />
   </component>
 </project>

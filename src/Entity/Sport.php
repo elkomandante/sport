@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Sport
 {
+    const imageDir = 'sport';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -32,6 +34,16 @@ class Sport
      * @ORM\OneToMany(targetEntity="App\Entity\League", mappedBy="sport")
      */
     private $leagues;
+
+    /**
+     * @ORM\Column (type="string",length=127, nullable=true)
+     */
+    private $thumbnailImage;
+
+    /**
+     * @ORM\Column (type="string",length=127, nullable=true)
+     */
+    private $thumbnailGreenImage;
 
 
     public function __construct()
@@ -92,5 +104,37 @@ class Sport
     {
         if($this->leagues->contains($league)) return;
         $this->leagues->add($league);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getThumbnailImage()
+    {
+        return $this->thumbnailImage;
+    }
+
+    /**
+     * @param mixed $thumbnailImage
+     */
+    public function setThumbnailImage($thumbnailImage): void
+    {
+        $this->thumbnailImage = $thumbnailImage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getThumbnailGreenImage()
+    {
+        return $this->thumbnailGreenImage;
+    }
+
+    /**
+     * @param mixed $thumbnailGreenImage
+     */
+    public function setThumbnailGreenImage($thumbnailGreenImage): void
+    {
+        $this->thumbnailGreenImage = $thumbnailGreenImage;
     }
 }

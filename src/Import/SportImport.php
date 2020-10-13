@@ -20,6 +20,7 @@ class SportImport extends ImportFather implements ImporterInterface
 
     public function import()
     {
+
         $response = $this->client->request('GET',ImportCommand::feeds[self::type]);
 
         if($response->getStatusCode() !== 200){
@@ -27,6 +28,7 @@ class SportImport extends ImportFather implements ImporterInterface
         }
 
         $sports = $response->toArray();
+
         foreach ($sports['sports'] as $sport){
             $sportEntity = $this->getEntityManager()->getRepository(Sport::class)->findOneBy(['id' => $sport['idSport']]);
 
@@ -35,13 +37,17 @@ class SportImport extends ImportFather implements ImporterInterface
                 $sportEntity->setId($sport['idSport']);
                 $this->getEntityManager()->persist($sportEntity);
             }
-
+            echo $sport['strSport']."\n";
             $sportEntity->setName($sport['strSport']);
             $sportEntity->setDescription($sport['strSportDescription']);
+            $sportEntity->setThumbnailImage($this->imageUpload->uploadImage($sport['strSportThumb'],Sport::imageDir));
+            $sportEntity->setThumbnailGreenImage($this->imageUpload->uploadImage($sport['strSportThumbGreen'],Sport::imageDir));
 
         }
 
         $this->getEntityManager()->flush();
+
+        die();
 
     }
 }
