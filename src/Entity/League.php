@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\LeagueRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=LeagueRepository::class)
@@ -14,12 +15,14 @@ class League
     const imageDir = 'leagues';
 
     /**
+     * @Groups({"sport:list","sport:single"})
      * @ORM\Id
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
+     * @Groups({"sport:single"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
@@ -30,7 +33,7 @@ class League
     private $youtube;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $formedYear;
 
@@ -239,7 +242,7 @@ class League
     /**
      * @return ArrayCollection
      */
-    public function getTeams(): ArrayCollection
+    public function getTeams()
     {
         return $this->teams;
     }

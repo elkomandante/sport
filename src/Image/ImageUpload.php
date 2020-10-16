@@ -23,9 +23,15 @@ class ImageUpload
 
     public function uploadImage($imageUrl,$imageDir)
     {
-        $response = $this->client->request('GET', $imageUrl);
+        try {
+            $response = $this->client->request('GET', $imageUrl);
 
-        $image = $response->getContent();
+            $image = $response->getContent();
+        }catch (\Exception $e){
+            echo $e->getMessage();
+            return "";
+        }
+
 
         file_put_contents($this->assetsDir.$imageDir."/".basename($imageUrl),$image);
 

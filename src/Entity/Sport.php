@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\SportRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SportRepository::class)
@@ -16,32 +17,38 @@ class Sport
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
+     * @Groups({"sport:list", "sport:single"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=127)
+     * @Groups({"sport:list","sport:single"})
      */
     private $name;
 
     /**
      * @ORM\Column (type="text")
+     * @Groups({"sport:list","sport:single"})
      */
     private $description;
 
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\League", mappedBy="sport")
+     * @Groups({"sport:list","sport:single"})
      */
     private $leagues;
 
     /**
      * @ORM\Column (type="string",length=127, nullable=true)
+     * @Groups({"sport:list","sport:single"})
      */
     private $thumbnailImage;
 
     /**
      * @ORM\Column (type="string",length=127, nullable=true)
+     * @Groups({"sport:list","sport:single"})
      */
     private $thumbnailGreenImage;
 
@@ -76,9 +83,6 @@ class Sport
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getDescription()
     {
         return $this->description;
@@ -95,7 +99,7 @@ class Sport
     /**
      * @return ArrayCollection
      */
-    public function getLeagues(): ArrayCollection
+    public function getLeagues()
     {
         return $this->leagues;
     }
@@ -137,4 +141,5 @@ class Sport
     {
         $this->thumbnailGreenImage = $thumbnailGreenImage;
     }
+
 }
