@@ -47,4 +47,14 @@ class LeagueRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getLeaguesBySport($sportId)
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.sport = :sportId')
+            ->setParameter('sportId', $sportId)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

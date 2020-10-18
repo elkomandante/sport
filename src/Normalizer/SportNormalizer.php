@@ -4,6 +4,7 @@
 namespace App\Normalizer;
 
 
+use App\Entity\League;
 use App\Entity\Sport;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
@@ -11,6 +12,10 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class SportNormalizer implements ContextAwareNormalizerInterface
 {
+    const singleEndpoints = [
+        Sport::class => 'sport_single',
+        League::class => 'league_single'
+    ];
 
     /**
      * @var UrlGeneratorInterface
@@ -29,16 +34,16 @@ class SportNormalizer implements ContextAwareNormalizerInterface
 
     public function supportsNormalization($data, string $format = null, array $context = [])
     {
-        return $data instanceof Sport;
+        return $data instanceof Sport || $data instanceof League;
     }
 
     public function normalize($object, string $format = null, array $context = [])
     {
+
         $data = $this->normalizer->normalize($object, $format, $context);
-        $data['pera'] = 'zika';
 
         // Here, add, edit, or delete some data:
-        $data['href']['self'] = $this->router->generate('sport_single', [
+        $data['href']['self'] = $this->router->generate(self::singleEndpoints[get_class($object)], [
             'id' => $object->getId(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
 

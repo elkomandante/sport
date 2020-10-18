@@ -15,64 +15,73 @@ class League
     const imageDir = 'leagues';
 
     /**
-     * @Groups({"sport:list","sport:single"})
+     * @Groups({"league:list"})
      * @ORM\Id
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @Groups({"sport:single"})
+     * @Groups({"sport:single","sport:list","league:list"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups({"sport:single","league:list"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $youtube;
 
     /**
+     * @Groups({"sport:single","league:list"})
      * @ORM\Column(type="integer", nullable=true)
      */
     private $formedYear;
 
 
     /**
+     * @Groups({"sport:single","league:list"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $facebook;
 
 
     /**
+     * @Groups({"sport:single","league:list"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $twitter;
 
     /**
+     * @Groups({"sport:single","league:list"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $bannerImage;
 
 
     /**
+     * @Groups({"sport:single","league:list"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $badgeImage;
 
 
     /**
+     * @Groups({"sport:single","league:list"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $logoImage;
 
     /**
+     * @Groups({"sport:single","league:list"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $trophyImage;
 
 
     /**
+     * @Groups({"sport:single","league:list"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;

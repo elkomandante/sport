@@ -45,3 +45,7 @@ services:
     App\EventListener\CommandExceptionListener:
         tags:
             - { name: kernel.event_listener, event: console.command }
+
+    App\EventListener\ApiExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }

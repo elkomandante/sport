@@ -6,6 +6,7 @@ use App\Repository\SportRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SportRepository::class)
@@ -13,6 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Sport
 {
     const imageDir = 'sport';
+
 
     /**
      * @ORM\Id
@@ -24,12 +26,14 @@ class Sport
     /**
      * @ORM\Column(type="string", length=127)
      * @Groups({"sport:list","sport:single"})
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @ORM\Column (type="text")
      * @Groups({"sport:list","sport:single"})
+     * @Assert\NotBlank()
      */
     private $description;
 

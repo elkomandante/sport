@@ -62,6 +62,9 @@ class TeamsByLeagueImport extends ImportFather implements ImporterInterface
                 $teamEntity->setStadiumCapacity((int) $team['intStadiumCapacity']);
                 $teamEntity->setStadiumDescription($team['strStadiumDescription']);
                 $teamEntity->setStadiumLocation($team['strStadiumLocation']);
+                $teamEntity->setBadgeImage(!empty($team['strTeamBadge'])?$this->imageUpload->uploadImage($team['strTeamBadge'],Team::imageDir):null);
+                $teamEntity->setJerseyImage(!empty($team['strTeamJersey'])?$this->imageUpload->uploadImage($team['strTeamJersey'],Team::imageDir):null);
+                $teamEntity->setLogoImage(!empty($team['strTeamLogo'])?$this->imageUpload->uploadImage($team['strTeamLogo'],Team::imageDir):null);
                 $this->entityManager->flush();
 
             }

@@ -19,6 +19,12 @@ class SportRepository extends ServiceEntityRepository
         parent::__construct($registry, Sport::class);
     }
 
+    public function saveSport(Sport $sport)
+    {
+        $this->_em->persist($sport);
+        $this->_em->flush();
+    }
+
     // /**
     //  * @return Sport[] Returns an array of Sport objects
     //  */
@@ -47,4 +53,6 @@ class SportRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
 }

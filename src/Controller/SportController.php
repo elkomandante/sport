@@ -4,8 +4,11 @@ namespace App\Controller;
 
 use App\ApiService\Sport\SportService;
 use App\Entity\Sport;
+use App\Form\Type\SportType;
 use App\Response\ApiResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
@@ -19,16 +22,21 @@ class SportController extends AbstractController
      * @var SportService
      */
     private $sportService;
+    /**
+     * @var RequestStack
+     */
+    private $requestStack;
 
 
-    public function __construct(ApiResponse $apiResponse, SportService $sportService)
+    public function __construct(ApiResponse $apiResponse, SportService $sportService, RequestStack $requestStack)
     {
         $this->apiResponse = $apiResponse;
         $this->sportService = $sportService;
+        $this->requestStack = $requestStack;
     }
 
     /**
-     * @Route("/sports", name="sport_list")
+     * @Route("/sports", name="sport_list", methods={"GET"})
      */
     public function sportList()
     {
@@ -38,9 +46,39 @@ class SportController extends AbstractController
 
     /**
      * @Route ("/sports/{id}", name="sport_single")
+     * @param Sport $sport
+     * @return JsonResponse
      */
     public function sportSingle(Sport $sport)
     {
-        return $this->apiResponse->generateResponse($sport,[AbstractNormalizer::GROUPS => ['sport:single']]);
+        return $this->apiResponse->generateResponse([$sport],[AbstractNormalizer::GROUPS => ['sport:single']]);
+    }
+
+
+    /**
+     * @Route("/sports/{id}/leagues")
+     * @param $id
+     * @return JsonResponse
+     */
+    public function getLeaguesBySport($id)
+    {
+        $leagues = $this->sportService->getLeaguesBySport($id);
+
+        return $this->apiResponse->generateResponse($leagues,[AbstractNormalizer::GROUPS => ['league:list']]);
+    }
+
+    /**
+     * @Route ("/sports",name="sport_create",methods={"POST"})
+     */
+    public function createSport()
+    {
+        $postData = $this->requestStack->getCurrentRequest()->getContent();
+        $sport = new Sport();
+        $form = $this->createForm(SportType::class,$sport);
+        $form->submit(json_decode($postData,true));
+
+        $sport = $this->sportService->savePost($sport);
+
+        return $this->apiResponse->generateResponse([$sport],[AbstractNormalizer::GROUPS => ["sport:single"]]);
     }
 }

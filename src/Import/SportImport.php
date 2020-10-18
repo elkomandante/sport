@@ -37,7 +37,6 @@ class SportImport extends ImportFather implements ImporterInterface
                 $sportEntity->setId($sport['idSport']);
                 $this->getEntityManager()->persist($sportEntity);
             }
-            echo $sport['strSport']."\n";
             $sportEntity->setName($sport['strSport']);
             $sportEntity->setDescription($sport['strSportDescription']);
             $sportEntity->setThumbnailImage($this->imageUpload->uploadImage($sport['strSportThumb'],Sport::imageDir));
