@@ -45,7 +45,7 @@ class SportController extends AbstractController
     }
 
     /**
-     * @Route ("/sports/{id}", name="sport_single")
+     * @Route ("/sports/{id}", name="sport_single", methods={"GET"})
      * @param Sport $sport
      * @return JsonResponse
      */
@@ -63,7 +63,6 @@ class SportController extends AbstractController
     public function getLeaguesBySport($id)
     {
         $leagues = $this->sportService->getLeaguesBySport($id);
-
         return $this->apiResponse->generateResponse($leagues,[AbstractNormalizer::GROUPS => ['league:list']]);
     }
 
@@ -81,4 +80,34 @@ class SportController extends AbstractController
 
         return $this->apiResponse->generateResponse([$sport],[AbstractNormalizer::GROUPS => ["sport:single"]]);
     }
+
+    /**
+     * @Route(path="/sports/{id}", name="sport_delete", methods={"DELETE"})
+     * @param Sport $sport
+     * @return JsonResponse
+     */
+    public function deleteSport(Sport $sport)
+    {
+        $this->sportService->deleteSport($sport);
+        return new JsonResponse(null,200);
+    }
+
+    /**
+     * @Route(path="/sports/{id}", name="sport_update", methods={"PUT"})
+     * @param Sport $sport
+     * @return JsonResponse
+     */
+    public function updateSport(Sport $sport)
+    {
+        $data = $this->requestStack->getCurrentRequest()->getContent();
+        $form = $this->createForm(SportType::class,$sport);
+        $form->submit(json_decode($data,true));
+
+        $this->sportService->updateSport($sport);
+
+        return $this->apiResponse->generateResponse([$sport],[AbstractNormalizer::GROUPS => ['sport:single']]);
+
+    }
+
+
 }

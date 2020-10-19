@@ -20,25 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2432a0f6-59bf-4d21-b042-7bb93c6860d7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sport_database.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sport_database.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ApiService/Sport/SportService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApiService/Sport/SportService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/League.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/League.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Sport.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Sport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Image/ImageUpload.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Image/ImageUpload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Import/SportImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Import/SportImport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Import/TeamsByLeagueImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Import/TeamsByLeagueImport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Normalizer/SportNormalizer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Normalizer/SportNormalizer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/LeagueRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LeagueRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/SportRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SportRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Response/ApiResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Response/ApiResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +177,8 @@
       <workItem from="1602934158766" duration="7559000" />
       <workItem from="1602957240374" duration="6114000" />
       <workItem from="1603015688814" duration="3230000" />
-      <workItem from="1603019023614" duration="6053000" />
+      <workItem from="1603019023614" duration="8024000" />
+      <workItem from="1603050173787" duration="3022000" />
     </task>
     <servers />
   </component>

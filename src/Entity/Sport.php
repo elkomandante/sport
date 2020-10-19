@@ -50,11 +50,16 @@ class Sport
      */
     private $thumbnailImage;
 
+    private $thumbnailImageData;
+
     /**
      * @ORM\Column (type="string",length=127, nullable=true)
      * @Groups({"sport:list","sport:single"})
      */
     private $thumbnailGreenImage;
+
+
+    private $thumbnailImageGreenData;
 
 
     public function __construct()
@@ -144,6 +149,38 @@ class Sport
     public function setThumbnailGreenImage($thumbnailGreenImage): void
     {
         $this->thumbnailGreenImage = $thumbnailGreenImage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getThumbnailImageData()
+    {
+        return $this->thumbnailImageData;
+    }
+
+    /**
+     * @param mixed $thumbnailImageData
+     */
+    public function setThumbnailImageData($thumbnailImageData): void
+    {
+        $this->thumbnailImageData = $thumbnailImageData;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getThumbnailImageGreenData()
+    {
+        return $this->thumbnailImageGreenData;
+    }
+
+    /**
+     * @param mixed $thumbnailImageGreenData
+     */
+    public function setThumbnailImageGreenData($thumbnailImageGreenData): void
+    {
+        $this->thumbnailImageGreenData = $thumbnailImageGreenData;
     }
 
 }

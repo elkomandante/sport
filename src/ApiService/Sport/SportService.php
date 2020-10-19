@@ -4,8 +4,9 @@
 namespace App\ApiService\Sport;
 
 
+use App\ApiService\ApiServiceParent;
 use App\Entity\Sport;
-use App\Exception\ViolationException;
+use App\Image\EntityImageUploaders\SportImageUploader;
 use App\Image\ImageUpload;
 use App\Repository\LeagueRepository;
 use App\Repository\SportRepository;
@@ -13,7 +14,7 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
 
-class SportService implements ServiceSubscriberInterface
+class SportService extends ApiServiceParent implements ServiceSubscriberInterface
 {
 
     /**
@@ -27,7 +28,6 @@ class SportService implements ServiceSubscriberInterface
         $this->locator = $locator;
     }
 
-
     public function getAllSports()
     {
         return $this->locator->get(SportRepository::class)->findAll();
@@ -40,16 +40,33 @@ class SportService implements ServiceSubscriberInterface
 
     public function savePost(Sport $sport)
     {
-        $violations = $this->locator->get(ValidatorInterface::class)->validate($sport);
-        if(count($violations) !== 0) throw new ViolationException($violations);
+        $this->validate($this->locator->get(ValidatorInterface::class),$sport);
         $sport->setId(time());
 
-        $sport->setThumbnailImage($this->locator->get(ImageUpload::class)->uploadBase64Image(
-            $sport->getThumbnailImage(),
-            Sport::imageDir
-        ));
+        $this->locator->get(SportImageUploader::class)->upload(
+           $this->locator->get(ImageUpload::class),
+           $sport
+        );
+
         $this->locator->get(SportRepository::class)->saveSport($sport);
         return $sport;
+    }
+
+    public function deleteSport(Sport $sport)
+    {
+        $this->locator->get(SportRepository::class)->deleteSport($sport);
+    }
+
+    public function updateSport(Sport $sport)
+    {
+        $this->validate($this->locator->get(ValidatorInterface::class),$sport);
+
+        $this->locator->get(SportImageUploader::class)->upload(
+            $this->locator->get(ImageUpload::class),
+            $sport
+        );
+
+        $this->locator->get(SportRepository::class)->flush();
     }
 
     public static function getSubscribedServices()
@@ -58,7 +75,8 @@ class SportService implements ServiceSubscriberInterface
             SportRepository::class => SportRepository::class,
             LeagueRepository::class => LeagueRepository::class,
             ImageUpload::class => ImageUpload::class,
-            ValidatorInterface::class => ValidatorInterface::class
+            ValidatorInterface::class => ValidatorInterface::class,
+            SportImageUploader::class => SportImageUploader::class
         ];
     }
 }

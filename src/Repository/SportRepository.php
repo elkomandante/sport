@@ -25,6 +25,12 @@ class SportRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
+    public function deleteSport(Sport $sport)
+    {
+        $this->_em->remove($sport);
+        $this->_em->flush();
+    }
+
     // /**
     //  * @return Sport[] Returns an array of Sport objects
     //  */
@@ -53,6 +59,12 @@ class SportRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function flush()
+    {
+        $this->_em->flush();
+    }
+
 
 
 }

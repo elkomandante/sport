@@ -4,11 +4,12 @@
 namespace App\Image;
 
 
+use App\Image\EntityImageUploaders\ImageUploadInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class ImageUpload
+class ImageUpload implements ImageUploadInterface
 {
 
     const validMimeTypes = [
