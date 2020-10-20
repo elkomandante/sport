@@ -6,6 +6,7 @@ use App\ApiService\Sport\SportService;
 use App\Entity\Sport;
 use App\Form\Type\SportType;
 use App\Response\ApiResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -67,7 +68,8 @@ class SportController extends AbstractController
     }
 
     /**
-     * @Route ("/sports",name="sport_create",methods={"POST"})
+     * @Route ("/api/sports",name="sport_create",methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function createSport()
     {
@@ -83,6 +85,7 @@ class SportController extends AbstractController
 
     /**
      * @Route(path="/sports/{id}", name="sport_delete", methods={"DELETE"})
+     * @IsGranted ("ROLE_ADMIN")
      * @param Sport $sport
      * @return JsonResponse
      */
@@ -94,6 +97,7 @@ class SportController extends AbstractController
 
     /**
      * @Route(path="/sports/{id}", name="sport_update", methods={"PUT"})
+     * @IsGranted ("ROLE_ADMIN")
      * @param Sport $sport
      * @return JsonResponse
      */

@@ -5,10 +5,10 @@ namespace App\EventListener;
 
 
 use App\Exception\DomainException;
+use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ApiExceptionListener
 {
@@ -16,7 +16,7 @@ class ApiExceptionListener
     {
         $throwable = $event->getThrowable();
 
-        if($throwable instanceof NotFoundHttpException){
+        if($throwable instanceof EntityNotFoundException){
             $response = new JsonResponse(['errors' => 'Entity not found.'], Response::HTTP_NOT_FOUND);
             $event->setResponse($response);
 

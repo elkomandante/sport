@@ -20,11 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2432a0f6-59bf-4d21-b042-7bb93c6860d7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sport_database.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sport_database.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ApiService/Sport/SportService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApiService/Sport/SportService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LeagueRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LeagueRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/SportRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SportRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventListener/ApiExceptionListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/ApiExceptionListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +130,15 @@
       <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iV828tD17CXAZcnTi4jTTPI4yT" />
@@ -133,7 +149,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../leapRate/leaprate_com" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -179,6 +195,9 @@
       <workItem from="1603015688814" duration="3230000" />
       <workItem from="1603019023614" duration="8024000" />
       <workItem from="1603050173787" duration="3022000" />
+      <workItem from="1603184893395" duration="619000" />
+      <workItem from="1603185603405" duration="2097000" />
+      <workItem from="1603196454654" duration="8287000" />
     </task>
     <servers />
   </component>
@@ -215,14 +234,14 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2646" y="297" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602962560321" />
-    <state x="2696" y="297" width="424" height="484" key="FileChooserDialogImpl" timestamp="1602935299922">
+    <state x="2696" y="297" width="424" height="484" key="FileChooserDialogImpl" timestamp="1603184907205">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2696" y="297" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602935299922" />
-    <state x="2644" y="258" width="609" height="561" key="NewPhpClassDialog" timestamp="1602974646076">
+    <state x="2696" y="297" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603184907205" />
+    <state x="2644" y="258" width="609" height="561" key="NewPhpClassDialog" timestamp="1603186289721">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2644" y="258" width="609" height="561" key="NewPhpClassDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602974646076" />
+    <state x="2644" y="258" width="609" height="561" key="NewPhpClassDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603186289721" />
     <state x="769" y="279" width="529" height="568" key="NewPhpClassDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1602845095113" />
     <state x="791" y="479" width="399" height="156" key="NewPhpFileDialog" timestamp="1602845070247">
       <screen x="72" y="27" width="1848" height="1053" />
