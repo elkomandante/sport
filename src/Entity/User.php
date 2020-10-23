@@ -4,11 +4,16 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="Username is taken."
+ * )
  */
 class User implements UserInterface
 {
@@ -34,6 +39,10 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
+     * @Assert\Length(
+     *     min=6 ,
+     *     minMessage="Password has to contain at least 6 Characters"
+     * )
      */
     private $password;
 
