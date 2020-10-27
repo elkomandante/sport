@@ -144,4 +144,25 @@ class AuthControllerTest extends WebTestCase
     }
 
 
+    public function testBadLogin()
+    {
+        try {
+            $response = $this->client->request('POST','https://localhost:8000/auth/login',[
+                'json' => [
+                    'username' => uniqid(),
+                    'password' => uniqid()
+                ]
+            ]);
+            $statusCode = $response->getStatusCode();
+            $content = json_decode($response->getContent(false),true);
+        }catch (TransportExceptionInterface $exception){
+            $this->assertTrue(false);
+            return false;
+        }
+
+        $this->assertEquals(401,$statusCode);
+        $this->assertEquals("Invalid credentials.",$content['message']);
+    }
+
+
 }
