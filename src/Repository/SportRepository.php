@@ -12,59 +12,28 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Sport[]    findAll()
  * @method Sport[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SportRepository extends ServiceEntityRepository
+class SportRepository extends ServiceEntityRepository implements SportRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Sport::class);
     }
 
-    public function saveSport(Sport $sport)
+    public function saveSport($sport)
     {
         $this->_em->persist($sport);
         $this->_em->flush();
     }
 
-    public function deleteSport(Sport $sport)
+    public function deleteSport($sport)
     {
         $this->_em->remove($sport);
         $this->_em->flush();
     }
 
-    // /**
-    //  * @return Sport[] Returns an array of Sport objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Sport
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-
     public function flush()
     {
         $this->_em->flush();
     }
-
-
 
 }

@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Team
 {
+    const imageDir = 'teams';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -80,6 +82,21 @@ class Team
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $youtube;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $badgeImage;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $jerseyImage;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $logoImage;
 
     /**
      * @ORM\ManyToOne (targetEntity="App\Entity\League", inversedBy="teams")
@@ -269,5 +286,53 @@ class Team
     public function setId($id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBadgeImage()
+    {
+        return $this->badgeImage;
+    }
+
+    /**
+     * @param mixed $badgeImage
+     */
+    public function setBadgeImage($badgeImage): void
+    {
+        $this->badgeImage = $badgeImage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJerseyImage()
+    {
+        return $this->jerseyImage;
+    }
+
+    /**
+     * @param mixed $jerseyImage
+     */
+    public function setJerseyImage($jerseyImage): void
+    {
+        $this->jerseyImage = $jerseyImage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLogoImage()
+    {
+        return $this->logoImage;
+    }
+
+    /**
+     * @param mixed $logoImage
+     */
+    public function setLogoImage($logoImage): void
+    {
+        $this->logoImage = $logoImage;
     }
 }

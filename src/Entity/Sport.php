@@ -33,9 +33,20 @@ class Sport
     /**
      * @ORM\Column (type="text")
      * @Groups({"sport:list","sport:single"})
-     * @Assert\NotBlank()
      */
     private $description;
+
+
+    /**
+     * @ORM\Column (type="text" , nullable=true)
+     */
+    private $internalDescription;
+
+
+    /**
+     * @ORM\Column (type="text" , nullable=true)
+     */
+    private $additionalInfo;
 
 
     /**
@@ -181,6 +192,38 @@ class Sport
     public function setThumbnailImageGreenData($thumbnailImageGreenData): void
     {
         $this->thumbnailImageGreenData = $thumbnailImageGreenData;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInternalDescription()
+    {
+        return $this->internalDescription;
+    }
+
+    /**
+     * @param mixed $internalDescription
+     */
+    public function setInternalDescription($internalDescription): void
+    {
+        $this->internalDescription = $internalDescription;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdditionalInfo()
+    {
+        return $this->additionalInfo;
+    }
+
+    /**
+     * @param mixed $additionalInfo
+     */
+    public function setAdditionalInfo($additionalInfo): void
+    {
+        $this->additionalInfo = $additionalInfo;
     }
 
 }
