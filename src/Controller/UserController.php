@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\ApiService\User\UserService;
+use App\Entity\User;
+use App\Form\UserType;
 use App\Response\ApiResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,7 +29,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/api/users", name="user_list")
+     * @Route("/api/users", name="user_list", methods={"GET"})
      */
     public function userList()
     {
@@ -34,7 +38,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route (path="/api/users/{id}", name="user_single")
+     * @Route (path="/api/users/{id}", name="user_single", methods={"GET"})
      * @param $id
      * @return JsonResponse
      */
@@ -43,6 +47,25 @@ class UserController extends AbstractController
         $user = $this->userService->getUserById($id);
         return $this->apiResponse->generateResponse([$user],[AbstractNormalizer::GROUPS => 'user:single']);
     }
+
+
+    /**
+     * @Route("/api/users/{id}", methods={"PATCH"})
+     */
+
+    public function userUpdate(User $user, RequestStack $requestStack)
+    {
+        
+        $data = $requestStack->getMasterRequest()->getContent();
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->submit(json_decode($data,1),false);
+
+        $this->userService->updateUser($user);
+
+        return $this->apiResponse->generateResponse([$user],[AbstractNormalizer::GROUPS => 'user:single']);
+    }
+
 
 
 
