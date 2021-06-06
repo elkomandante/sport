@@ -6,7 +6,9 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator as CustomAssert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -21,17 +23,20 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ({"user:list", "user:single"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank()
+     * @Groups({"user:list","user:single"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups ({"user:single"})
      */
     private $roles = [];
 
@@ -45,6 +50,21 @@ class User implements UserInterface
      * )
      */
     private $password;
+
+
+    /**
+     * @ORM\Column (type="string", length=1000, nullable=true)
+     * @Groups ({"user:single"})
+     * @CustomAssert\UserRoleConstraint(role="ROLE_SUPER_USER")
+     */
+    private $about;
+
+
+    /**
+     * @ORM\Column (type="string", length=255, nullable=true)
+     * @Groups ({"user:single"})
+     */
+    private $linkedinUrl;
 
     public function getId(): ?int
     {
@@ -117,5 +137,37 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAbout()
+    {
+        return $this->about;
+    }
+
+    /**
+     * @param mixed $about
+     */
+    public function setAbout($about): void
+    {
+        $this->about = $about;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinkedinUrl()
+    {
+        return $this->linkedinUrl;
+    }
+
+    /**
+     * @param mixed $linkedinUrl
+     */
+    public function setLinkedinUrl($linkedinUrl): void
+    {
+        $this->linkedinUrl = $linkedinUrl;
     }
 }

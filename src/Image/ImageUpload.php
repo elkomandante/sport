@@ -5,6 +5,7 @@ namespace App\Image;
 
 
 use App\Image\EntityImageUploaders\ImageUploadInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -19,22 +20,28 @@ class ImageUpload implements ImageUploadInterface
     ];
 
     private $assetsDir;
-    /**
-     * @var HttpClientInterface
-     */
+
     private $client;
 
-    public function __construct($assetsDir,HttpClientInterface $client)
+    private $filesystem;
+
+    public function __construct($assetsDir,HttpClientInterface $client, Filesystem $filesystem)
     {
         $this->assetsDir = $assetsDir;
         $this->client = $client;
+        $this->filesystem = $filesystem;
     }
 
     public function uploadImage($imageUrl,$imageDir)
     {
+        $imageDirPath = $this->assetsDir.$imageDir."/";
+
+        if(!$this->filesystem->exists($imageDirPath)){
+            $this->filesystem->mkdir($imageDirPath,0700);
+        }
+
         try {
             $response = $this->client->request('GET', $imageUrl);
-
             $image = $response->getContent();
         }catch (\Exception $e){
             echo $e->getMessage();
@@ -42,7 +49,7 @@ class ImageUpload implements ImageUploadInterface
         }
 
 
-        file_put_contents($this->assetsDir.$imageDir."/".basename($imageUrl),$image);
+        file_put_contents($imageDirPath.basename($imageUrl),$image);
 
         return basename($imageUrl);
 

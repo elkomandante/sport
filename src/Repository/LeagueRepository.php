@@ -12,41 +12,12 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method League[]    findAll()
  * @method League[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LeagueRepository extends ServiceEntityRepository
+class LeagueRepository extends ServiceEntityRepository implements LeagueRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, League::class);
     }
-
-    // /**
-    //  * @return League[] Returns an array of League objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?League
-    {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 
     public function getLeaguesBySport($sportId)
     {

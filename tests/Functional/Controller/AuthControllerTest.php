@@ -7,8 +7,6 @@ namespace App\Tests\Functional\Controller;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpClient\Exception\ClientException;
-use Symfony\Component\HttpClient\Response\TraceableResponse;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -69,15 +67,16 @@ class AuthControllerTest extends WebTestCase
 
     public function testRegister()
     {
-
-        $response = $this->client->request('POST','https://localhost:8000/auth/register',[
+        $response = $this->client->request('POST','http://localhost:8000/auth/register',[
             'json' => [
                 'username' => self::testUsername,
                 'password' => self::testPassword
             ]
         ]);
 
+
         $response->getContent();
+
 
         $userEntity = $this->entityManager->getRepository(User::class)->findOneBy([
                 'username' => self::testUsername
@@ -95,7 +94,7 @@ class AuthControllerTest extends WebTestCase
         $user = $this->createTestUser();
 
         try {
-            $response = $this->client->request('POST',"https://localhost:8000/auth/register",[
+            $response = $this->client->request('POST',"http://localhost:8000/auth/register",[
                 'json' => [
                     'username' => $user->getUsername(),
                     'password' => self::testPassword
@@ -124,7 +123,7 @@ class AuthControllerTest extends WebTestCase
         $this->createTestUser();
 
         try {
-            $response = $this->client->request('POST','https://localhost:8000/auth/login',[
+            $response = $this->client->request('POST','http://localhost:8000/auth/login',[
                 'json' => [
                     'username' => self::testUsername,
                     'password' => self::testPassword
@@ -147,7 +146,7 @@ class AuthControllerTest extends WebTestCase
     public function testBadLogin()
     {
         try {
-            $response = $this->client->request('POST','https://localhost:8000/auth/login',[
+            $response = $this->client->request('POST','http://localhost:8000/auth/login',[
                 'json' => [
                     'username' => uniqid(),
                     'password' => uniqid()

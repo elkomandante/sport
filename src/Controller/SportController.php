@@ -37,7 +37,7 @@ class SportController extends AbstractController
     }
 
     /**
-     * @Route("/sports", name="sport_list", methods={"GET"})
+     * @Route("/api/sports", name="sport_list", methods={"GET"})
      */
     public function sportList()
     {
@@ -46,7 +46,7 @@ class SportController extends AbstractController
     }
 
     /**
-     * @Route ("/sports/{id}", name="sport_single", methods={"GET"})
+     * @Route ("/api/sports/{id}", name="sport_single", methods={"GET"})
      * @param Sport $sport
      * @return JsonResponse
      */
@@ -57,7 +57,7 @@ class SportController extends AbstractController
 
 
     /**
-     * @Route("/sports/{id}/leagues")
+     * @Route("/api/sports/{id}/leagues")
      * @param $id
      * @return JsonResponse
      */
@@ -73,6 +73,8 @@ class SportController extends AbstractController
      */
     public function createSport()
     {
+        dd($this->getUser());
+
         $postData = $this->requestStack->getCurrentRequest()->getContent();
         $sport = new Sport();
         $form = $this->createForm(SportType::class,$sport);
@@ -84,7 +86,7 @@ class SportController extends AbstractController
     }
 
     /**
-     * @Route(path="/sports/{id}", name="sport_delete", methods={"DELETE"})
+     * @Route(path="/api/sports/{id}", name="sport_delete", methods={"DELETE"})
      * @IsGranted ("ROLE_ADMIN")
      * @param Sport $sport
      * @return JsonResponse
@@ -96,7 +98,7 @@ class SportController extends AbstractController
     }
 
     /**
-     * @Route(path="/sports/{id}", name="sport_update", methods={"PUT"})
+     * @Route(path="/api/sports/{id}", name="sport_update", methods={"PUT"})
      * @IsGranted ("ROLE_ADMIN")
      * @param Sport $sport
      * @return JsonResponse

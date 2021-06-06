@@ -9,7 +9,9 @@ use App\Entity\Sport;
 use App\Image\EntityImageUploaders\SportImageUploader;
 use App\Image\ImageUpload;
 use App\Repository\LeagueRepository;
+use App\Repository\LeagueRepositoryInterface;
 use App\Repository\SportRepository;
+use App\Repository\SportRepositoryInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
@@ -30,12 +32,12 @@ class SportService extends ApiServiceParent implements ServiceSubscriberInterfac
 
     public function getAllSports()
     {
-        return $this->locator->get(SportRepository::class)->findAll();
+        return $this->locator->get(SportRepositoryInterface::class)->findAll();
     }
 
     public function getLeaguesBySport($sportId)
     {
-        return $this->locator->get(LeagueRepository::class)->getLeaguesBySport($sportId);
+        return $this->locator->get(LeagueRepositoryInterface::class)->getLeaguesBySport($sportId);
     }
 
     public function savePost(Sport $sport)
@@ -72,8 +74,8 @@ class SportService extends ApiServiceParent implements ServiceSubscriberInterfac
     public static function getSubscribedServices()
     {
         return [
-            SportRepository::class => SportRepository::class,
-            LeagueRepository::class => LeagueRepository::class,
+            SportRepositoryInterface::class => SportRepositoryInterface::class,
+            LeagueRepositoryInterface::class => LeagueRepositoryInterface::class,
             ImageUpload::class => ImageUpload::class,
             ValidatorInterface::class => ValidatorInterface::class,
             SportImageUploader::class => SportImageUploader::class
